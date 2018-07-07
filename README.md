@@ -6,4 +6,9 @@ Tampermonkey script for edit bx.in.th (Bitcoin centralize exchange)
 2. copy script & paste
 3. enable and run script
 
-### Original vs new style
+### Result
+#### original style
+![ori](images/ori.png)
+<br>
+#### new style
+![new](images/new.png)
