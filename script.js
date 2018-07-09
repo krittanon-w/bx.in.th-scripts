@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         bx_ui
 // @namespace    bx
-// @version      1.0
+// @version      1.1
 // @description  new Bx.in.th UI
 // @author       Krittanon Wisedchart
 // @match        https://bx.in.th/THB/*
@@ -19,8 +19,7 @@
         {volume: 25000, color: "#FCCE54"},
     ];
     var intervalTime = 200 // // refresh interval time in ms
-
-    // main
+    
     if(autoStyleListVolume > 0) {
         let count = 0;
         for(let style of styleList){
@@ -47,11 +46,13 @@
                 const rows = $(table).children("tbody").children("tr").toArray();
                 for(let [rowIndex, row] of rows.entries()){
                     // filter only text
-                    // 12,000 THB 12 1,000 coin -> 12000 THB 12 1000 coin -> [12000, THB, 12, 1000, coin]
+                    // "12,000 THB 12 1,000 coin" -> "12000 THB 12 1000 coin" -> [12000, THB, 12, 1000, coin]
                     let text = row.outerText.replace(/,/g, '').split(/\t|\s/);
 
-                    // rate * coin
-                    let volume = parseFloat(text[text.length-3]) * parseFloat(text[text.length-2]);
+                    // voulme = rate * coin
+                    let rate = text[text.length-3];
+                    let coin = text[text.length-2];
+                    let volume = parseFloat(rate * coin);
 
                     for(let [styleIndex, style] of styleList.entries()){
                         if(volume >= style.volume){
