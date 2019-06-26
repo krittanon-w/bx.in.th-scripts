@@ -1,16 +1,12 @@
 // ==UserScript==
-// @name         bx_ui
-// @namespace    bx
-// @version      1.1
-// @description  new Bx.in.th UI
-// @author       Krittanon Wisedchart
+// @name         bx: price coloring
+// @author       Krittanon.w
 // @match        https://bx.in.th/THB/*
-// @grant        none
 // ==/UserScript==
 
 (function() {
     // config
-    var autoStyleListVolume = 400000; // more than 0 is auto
+    var autoStyleListVolume = 400000; // more than 0 is auto level coloring
     var styleList = [
         {volume: 400000, color: "#CA92EC"},
         {volume: 200000, color: "#5C9DED"},
@@ -18,8 +14,8 @@
         {volume: 50000, color: "#F87F52"},
         {volume: 25000, color: "#FCCE54"},
     ];
-    var intervalTime = 200 // // refresh interval time in ms
-    
+    var intervalTime = 100 // // refresh interval time in ms
+
     if(autoStyleListVolume > 0) {
         let count = 0;
         for(let style of styleList){
@@ -67,4 +63,4 @@
             }
         }
     }, intervalTime);
-})();
+})()
